@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+	<meta charset="utf-8">
+	<title>Graduate!</title>
+
+	<!-- CSS STYLE SHEETS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css">
+	<link rel="stylesheet" href="./main.css">
+
+	<!-- JQuery and Bootstrap.js -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+	<script src="./sidr/jquery.sidr.js"></script>
+	<link rel="stylesheet" href="./sidr/stylesheets/jquery.sidr.light.css">
+
+
+
+
+  </head>
+
+  <body class="container-fluid">
+	
+	<header>
+		<nav class="navbar navbar-default">
+			<ul class="nav navbar-nav">
+				<li><a id="simple-menu" class="menu-button" href="#sidr"><i class="fa" style="font-size: 1.5em">&#xf0c9;</i></a></li>
+			</ul>
+
+			<div class="navbar-header">
+				<a class="navbar-brand" href="/">Graduate!</a>
+			</div>
+			<ul class="nav navbar-nav navbar-right">
+				<!--
+				<li><a href="/"><i class="fa fa-home" ></i> Home</a></li>
+				<li><a href="/search"><i class="fa fa-search"></i> Search</a></li>
+				<li ng-if="!main.loggedIn"><a href="/login"><i class="fa fa-sign-in"></i> Login</a></li>
+				-->
+				<li><a href="#"><i class="fa" >&#xf013;</i> Account Settings</a></li>
+				<li>
+					<a class="lastChild" href="#"><i class="fa fa-sign-out"></i> Logout</a>
+				</li>
+				<!--
+				<li ng-if = "main.user.admin"><a href="/users"><i class="fa fa-user"></i> Users</a></li> 
+				<li ng-if="!main.loggedIn"><a href="/signup"><i class="fa fa-pencil"></i> Signup</a></li>
+				<li ng-if = "main.user.admin"><a href="/new"><i class="fa fa-book"></i> Add Book</a></li>
+				-->	
+
+			</ul> 
+		</nav>
+	</header>
+
+	<!-- SIDE BAR -->
+	<div id="sidr">
+	  <ul>
+		  <li>
+			  <a href="#">Program Requirements</a>
+			  <ul>
+				  <li><a href="#">Required Courses</a></li>
+				  <li><a href="#">Technical Electives</a></li>
+				  <li><a href="#">Natural Science Electives</a></li>
+				  <li><a href="#">Complimentary Studies</a></li>
+				  <li><a href="#">Co-op</a></li>
+			  </ul>
+		  </li>
+		  <li>
+			<form>
+			  <input type="text" placeholder="Search..." />
+			</form>
+		  </li>
+	  </ul>
+	  <h2>Course Details</h2>
+	  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus mollis sapien non nisi sodales pulvinar. Curabitur odio velit, porta sit amet lobortis sit amet, volutpat ut justo.</p>
+	  <ul>
+		  <li>
+			<a href="#">Fit Unscheduled Courses</a>
+		  </li>
+	  </ul>
+	</div>
+
+	<div class="program-pane">
+		<div class="TermList">
+			<ul class="list-inline">
+				<li class="TermSection shadow">
+					<h3 class="TermTitle metal">Spring 2016</h3>
+					<div class="DocumentContent">
+						<div class="CourseItem metal">
+							<h3 class="CourseTitle">CSC 361</h3>
+							<p>Computer Communication and Networks</p>
+						</div>
+						<div class="CourseItem metal">
+							<h3 class="CourseTitle">CSC 226</h3>
+							<p>Algorithms and Data Structures II</p>
+						</div>
+						<div class="CourseItem metal">
+							<h3 class="CourseTitle">ELEC 360</h3>
+							<p>Control Theory and Systems: I</p>
+						</div>
+						<div class="CourseItem metal">
+							<h3 class="CourseTitle">SENG 321</h3>
+							<p>Requirements Engineering</p>
+						</div>
+						<div class="CourseItem metal">
+							<h3 class="CourseTitle">SENG 371</h3>
+							<p>Software Evolution</p>
+						</div>
+					</div>
+				</li>
+				<li class="TermSection shadow">
+					<h3 class="TermTitle metal">Summer 2016</h3>
+					<div class="DocumentContent">
+						<div class="CourseItem metal">
+							<h3 class="CourseTitle">Work Term 3</h3>
+							<p>
+							</p>
+						</div>
+					</div>
+				</li>
+				<li class="TermSection shadow">
+					<h3 class="TermTitle metal">Fall 2016</h3>
+					<div class="DocumentContent">
+						<div class="CourseItem metal">
+							<h3 class="CourseTitle">CSC 355</h3>
+							<p>Digital Logic and Computer Organization</p>
+						</div>
+						<div class="CourseItem metal">
+							<h3 class="CourseTitle">CSC 320</h3>
+							<p>Foudations of Computer Science</p>
+						</div>
+						<div class="CourseItem metal">
+							<h3 class="CourseTitle">CSC 360</h3>
+							<p>Operating Systems</p>
+						</div>
+						<div class="CourseItem metal">
+							<h3 class="CourseTitle">CSC 370</h3>
+							<p>Database Systems</p>
+						</div>
+						<div class="CourseItem metal">
+							<h3 class="CourseTitle">SENG 360</h3>
+							<p>Security Engineering</p>
+						</div>
+					</div>
+				</li>
+				<li class="TermSection shadow">
+					<h3 class="TermTitle metal">Spring 2017</h3>
+					<div class="DocumentContent">
+						<div class="CourseItem metal">
+							<h3 class="CourseTitle">Work Term 4</h3>
+							<p></p>
+						</div>
+					</div>
+				</li>
+				<li class="TermSection shadow">
+					<h3 class="TermTitle metal">Summer 2017</h3>
+					<div class="DocumentContent">
+						<div class="CourseItem metal">
+							<h3 class="CourseTitle">SENG 426</h3>
+							<p>Software Quality Engineering</p>
+						</div>
+						<div class="CourseItem metal">
+							<h3 class="CourseTitle">SENG 440</h3>
+							<p>Embedded Systems</p>
+						</div>
+						<div class="CourseItem metal">
+							<h3 class="CourseTitle">SENG 499</h3>
+							<p>Technical Project</p>
+						</div>
+						<div class="CourseItem metal">
+							<h3 class="CourseTitle">ELEC 485</h3>
+							<p>Pattern Recognition</p>
+						</div>
+						<div class="CourseItem metal">
+							<h3 class="CourseTitle">SENG 474</h3>
+							<p>Data Mining</p>
+						</div>
+					</div>
+				</li>
+				<li class="TermSection shadow">
+					<h3 class="TermTitle metal">Fall 2017</h3>
+					<div class="DocumentContent">
+						<div class="CourseItem metal">
+							<h3 class="CourseTitle">GRADUATED!</h3>
+							<p></p>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div> 
+	</div>
+
+
+	<!-- Your code -->
+	<script>
+
+	$(document).ready(function () {
+	  $('#simple-menu').sidr({
+		timing: 'ease-in-out',
+		speed: 500
+	  });
+	});
+
+	$( window ).resize(function () {
+	  $.sidr('close', 'sidr');
+	});
+
+	</script>
+
+  </body>
+</html>
