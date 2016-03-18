@@ -7,15 +7,34 @@
 	<!-- CSS STYLE SHEETS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css">
+	<link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/black-tie/jquery-ui.css">
 	<link rel="stylesheet" href="./main.css">
 
 	<!-- JQuery and Bootstrap.js -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
+	<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+
 	<script src="./sidr/jquery.sidr.js"></script>
 	<link rel="stylesheet" href="./sidr/stylesheets/jquery.sidr.light.css">
 
+	<script src="https://cdn.jsdelivr.net/handlebarsjs/4.0.5/handlebars.min.js"></script>
+	<script src="./site.js"></script>
+
+	<script id="CourseOffering-template" type="text/x-handlebars-template">
+		<div class="CourseItem metal" id="{{ label }}">
+			<h3 class="CourseTitle">{{ label }}</h3>
+			<p>{{ title }}</p>
+		</div>
+	</script>
+
+	<script id="TermSection-template" type="text/x-handlebars-template">
+		<li class="TermSection shadow" id="{{ term }} {{ year }}">
+			<h3 class="TermTitle metal">{{ term }} {{ year }}</h3>
+			<div class="TermCourses"></div>
+		</li>
+	</script>
 
 
 
@@ -33,21 +52,12 @@
 				<a class="navbar-brand" href="/">Graduate!</a>
 			</div>
 			<ul class="nav navbar-nav navbar-right">
-				<!--
-				<li><a href="/"><i class="fa fa-home" ></i> Home</a></li>
-				<li><a href="/search"><i class="fa fa-search"></i> Search</a></li>
-				<li ng-if="!main.loggedIn"><a href="/login"><i class="fa fa-sign-in"></i> Login</a></li>
-				-->
-				<li><a href="#"><i class="fa" >&#xf013;</i> Account Settings</a></li>
+				<li>
+					<a href="#"><i class="fa" >&#xf013;</i> Account Settings</a>
+				</li>
 				<li>
 					<a class="lastChild" href="#"><i class="fa fa-sign-out"></i> Logout</a>
 				</li>
-				<!--
-				<li ng-if = "main.user.admin"><a href="/users"><i class="fa fa-user"></i> Users</a></li> 
-				<li ng-if="!main.loggedIn"><a href="/signup"><i class="fa fa-pencil"></i> Signup</a></li>
-				<li ng-if = "main.user.admin"><a href="/new"><i class="fa fa-book"></i> Add Book</a></li>
-				-->	
-
 			</ul> 
 		</nav>
 	</header>
@@ -56,7 +66,7 @@
 	<div id="sidr">
 	  <ul>
 		  <li>
-			  <a href="#">Program Requirements</a>
+			  <a href="#">Program Requirements <small id="closeCourseMenu" href="#">close</small></a>
 			  <ul>
 				  <li><a href="#">Required Courses</a></li>
 				  <li><a href="#">Technical Electives</a></li>
@@ -85,7 +95,7 @@
 			<ul class="list-inline">
 				<li class="TermSection shadow">
 					<h3 class="TermTitle metal">Spring 2016</h3>
-					<div class="DocumentContent">
+					<div class="TermCourses">
 						<div class="CourseItem metal">
 							<h3 class="CourseTitle">CSC 361</h3>
 							<p>Computer Communication and Networks</p>
@@ -110,7 +120,7 @@
 				</li>
 				<li class="TermSection shadow">
 					<h3 class="TermTitle metal">Summer 2016</h3>
-					<div class="DocumentContent">
+					<div class="TermCourses">
 						<div class="CourseItem metal">
 							<h3 class="CourseTitle">Work Term 3</h3>
 							<p>
@@ -120,7 +130,7 @@
 				</li>
 				<li class="TermSection shadow">
 					<h3 class="TermTitle metal">Fall 2016</h3>
-					<div class="DocumentContent">
+					<div class="TermCourses">
 						<div class="CourseItem metal">
 							<h3 class="CourseTitle">CSC 355</h3>
 							<p>Digital Logic and Computer Organization</p>
@@ -145,7 +155,7 @@
 				</li>
 				<li class="TermSection shadow">
 					<h3 class="TermTitle metal">Spring 2017</h3>
-					<div class="DocumentContent">
+					<div class="TermCourses">
 						<div class="CourseItem metal">
 							<h3 class="CourseTitle">Work Term 4</h3>
 							<p></p>
@@ -154,7 +164,7 @@
 				</li>
 				<li class="TermSection shadow">
 					<h3 class="TermTitle metal">Summer 2017</h3>
-					<div class="DocumentContent">
+					<div class="TermCourses">
 						<div class="CourseItem metal">
 							<h3 class="CourseTitle">SENG 426</h3>
 							<p>Software Quality Engineering</p>
@@ -179,7 +189,7 @@
 				</li>
 				<li class="TermSection shadow">
 					<h3 class="TermTitle metal">Fall 2017</h3>
-					<div class="DocumentContent">
+					<div class="TermCourses">
 						<div class="CourseItem metal">
 							<h3 class="CourseTitle">GRADUATED!</h3>
 							<p></p>
@@ -196,6 +206,7 @@
 
 	$(document).ready(function () {
 	  $('#simple-menu').sidr({
+		displace: false,
 		timing: 'ease-in-out',
 		speed: 500
 	  });

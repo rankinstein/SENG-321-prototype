@@ -12,6 +12,15 @@ a.lastChild
 .program-pane {
 }
 
+.metal.warning {
+	background-color: rgb(245, 211, 213);
+	box-shadow: inset 10px 0 10px -6px #dd8394, inset -10px 0 10px -6px #dd8394;
+}
+
+#closeCourseMenu{
+	float: right;
+}
+
 .TermList
 {
     overflow-x:scroll;
@@ -74,9 +83,10 @@ h3.metal
 	box-shadow: inset 10px 0 10px -6px #DDD, inset -10px 0 10px -6px #DDD;
 }
 
-.DocumentContent
+.TermCourses
 {
   white-space: normal;
+  height: 100%;
 }
 
 .CourseItem
