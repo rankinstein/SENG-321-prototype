@@ -170,14 +170,12 @@
       value: function openBody() {
         if (this.displace) {
           var transitions = helper.transitions,
-              $body = this.body,
-              $content = $('.TermList');
+              $body = this.body
 
           if (transitions.supported) {
             $body.css(transitions.property, 'all' + ' ' + this.speed / 1000 + 's ' + this.timing).css(this.side, 0).css("width", ($body.width()-this.menuWidth+30) + 'px').css({
               position: 'absolute',
             });
-            //$content.css("width", ($body.width()-this.menuWidth) + 'px');
             $body.css(this.side, this.menuWidth + 'px');
           } else {
             var bodyAnimation = this.getAnimation(openAction, 'body');
