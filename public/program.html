@@ -22,20 +22,26 @@
 	<script src="https://cdn.jsdelivr.net/handlebarsjs/4.0.5/handlebars.min.js"></script>
 	<script src="./site.js"></script>
 
-	<script id="CourseOffering-template" type="text/x-handlebars-template">
+	<template id="CourseOffering-template" type="text/x-handlebars-template">
 		<div class="CourseItem metal" id="{{ label }}">
 			<h3 class="CourseTitle">{{ label }}</h3>
 			<p>{{ title }}</p>
 		</div>
-	</script>
+	</template>
 
-	<script id="TermSection-template" type="text/x-handlebars-template">
+	<template id="TermSection-template" type="text/x-handlebars-template">
 		<li class="TermSection shadow" id="{{ term }} {{ year }}">
 			<h3 class="TermTitle metal">{{ term }} {{ year }}</h3>
 			<div class="TermCourses"></div>
 		</li>
-	</script>
+	</template>
 
+	<template id="Alert-template" type="text/x-handlebars-template">
+		<div class="alert alert-{{ alert_level }}" id="alert">
+			<a href="#" class="close" data-dismiss="alert" aria-label="close"> &times;</a>
+			<strong>{{ strong_text }}</strong> {{ message_text }}
+		</div>
+	</template>
 
 
 	</head>
@@ -48,11 +54,17 @@
 			</ul>
 
 			<div class="navbar-header">
-				<a class="navbar-brand nav-btn" href="/">Graduate!</a>
+				<a class="navbar-brand nav-btn" href="#">Graduate!</a>
 			</div>
 			<ul class="nav navbar-nav navbar-right">
+			<li>
+				<a id="undoBtn" class="nav-btn" href="#"><i class="fa fa-undo"></i> Undo</a>
+				</li>
 				<li>
-					<a class="nav-btn" href="#"><i class="fa" >&#xf013;</i> Account Settings</a>
+				<a id="redoBtn" class="nav-btn" href="#"><i class="fa fa-repeat"></i> Redo</a>
+				</li>
+				<li>
+					<a id="settingsBtn" class="nav-btn" href="#"><i class="fa" >&#xf013;</i> Account Settings</a>
 				</li>
 				<li>
 					<a class="nav-btn lastChild" href="/"><i class="fa fa-sign-out"></i> Logout</a>
@@ -68,34 +80,187 @@
 		<ul>
 			<li>
 				<a href="#">Program Requirements <small id="closeCourseMenu" href="#">close</small></a>
-				<ul>
-					<li><a href="#">Required Courses
-					<h3 class="CourseTitle">ELEC 485</h3>
-								<h3 class="CourseTitle">SENG 499</h3>
-								</a>
-				</li>
-					<li><a href="#">Technical Electives
-								<h3 class="CourseTitle">ELEC 485</h3>
-								<h3 class="CourseTitle">SENG 474</h3>
-					</a></li>
-					<li><a href="#">Natural Science Electives</a></li>
-					<li><a href="#">Complimentary Studies</a></li>
-					<li><a href="#">Co-op
-						<h3 class="CourseTitle">Work Term 4</h3>
-					</a>
-					</li>
-				</ul>
+		<div class="panel-group" id="accordion">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+				<h4 class="panel-title">
+					<a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Required Courses</a>
+				</h4>
+				</div>
+				<div id="collapse1" class="panel-collapse collapse in">
+				<div class="panel-body">
+					<div class="TermCourses">
+						<div class="CourseItem metal ui-draggable ui-draggable-handle" id="CSC 355" style="position: relative;">
+							<h3 class="CourseTitle">CSC 355</h3>
+							<p>Digital Logic and Computer Organization</p>
+						</div>
+						<div class="CourseItem metal ui-draggable ui-draggable-handle" id="CSC 320" style="position: relative;">
+							<h3 class="CourseTitle">CSC 320</h3>
+							<p>Foudations of Computer Science</p>
+						</div>
+						<div class="CourseItem metal ui-draggable ui-draggable-handle" id="CSC 360" style="position: relative;">
+							<h3 class="CourseTitle">CSC 360</h3>
+							<p>Operating Systems</p>
+						</div>
+						<div class="CourseItem metal ui-draggable ui-draggable-handle" id="CSC 370" style="position: relative;">
+							<h3 class="CourseTitle">CSC 370</h3>
+							<p>Database Systems</p>
+						</div>
+						<div class="CourseItem metal ui-draggable ui-draggable-handle" id="SENG 360" style="position: relative;">
+							<h3 class="CourseTitle">SENG 360</h3>
+							<p>Security Engineering</p>
+						</div>
+						<div class="CourseItem metal ui-draggable ui-draggable-handle" id="SENG 426" style="position: relative;">
+							<h3 class="CourseTitle">SENG 426</h3>
+							<p>Software Quality Engineering</p>
+						</div>
+						<div class="CourseItem metal ui-draggable ui-draggable-handle" id="SENG 440" style="position: relative;">
+							<h3 class="CourseTitle">SENG 440</h3>
+							<p>Embedded Systems</p>
+						</div>
+						<div class="CourseItem metal ui-draggable ui-draggable-handle" id="SENG 499" style="position: relative;">
+							<h3 class="CourseTitle">SENG 499</h3>
+							<p>Technical Project</p>
+						</div>
+					</div>
+				</div>
+				</div>
+			</div>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+				<h4 class="panel-title">
+					<a data-toggle="collapse" data-parent="#accordion" href="#collapse2">Technical Electives</a>
+				</h4>
+				</div>
+				<div id="collapse2" class="panel-collapse collapse">
+				<div class="panel-body">
+					<div class="TermCourses">
+						<div class="CourseItem metal ui-draggable ui-draggable-handle" id="SENG 474" style="position: relative;">
+							<h3 class="CourseTitle">SENG 474</h3>
+							<p>Data Mining</p>
+						</div>
+						<div class="CourseItem metal ui-draggable ui-draggable-handle" id="ELEC 485" style="position: relative;">
+							<h3 class="CourseTitle">ELEC 485</h3>
+							<p>Pattern Recognition</p>
+						</div>
+					</div>
+				</div>
+				</div>
+			</div>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+				<h4 class="panel-title">
+					<a data-toggle="collapse" data-parent="#accordion" href="#collapse3">Natural Science Electives</a>
+				</h4>
+				</div>
+				<div id="collapse3" class="panel-collapse collapse">
+				<div class="panel-body">
+					<div class="TermCourses">
+					Complete!
+					</div>
+				</div>
+				</div>
+			</div>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+				<h4 class="panel-title">
+					<a data-toggle="collapse" data-parent="#accordion" href="#collapse4">Complimentary Studies</a>
+				</h4>
+				</div>
+				<div id="collapse4" class="panel-collapse collapse">
+				<div class="panel-body">
+					<div class="TermCourses">
+					Complete!
+					</div>
+				</div>
+				</div>
+			</div>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+				<h4 class="panel-title">
+					<a data-toggle="collapse" data-parent="#accordion" href="#collapse5">Co-op</a>
+				</h4>
+				</div>
+				<div id="collapse5" class="panel-collapse collapse">
+				<div class="panel-body">
+					<div class="TermCourses">
+						<div class="CourseItem metal ui-draggable ui-draggable-handle" id="Work Term 3" style="position: relative;">
+							<h3 class="CourseTitle">Work Term 3</h3>
+							<p></p>
+						</div>
+						<div class="CourseItem metal ui-draggable ui-draggable-handle" id="Work Term 4" style="position: relative;">
+							<h3 class="CourseTitle">Work Term 4</h3>
+							<p></p>
+						</div>
+					</div>
+				</div>
+				</div>
+			</div>
+			</div>
+
 			</li>
 		</ul>
-		<h2>SENG 499 - Design Project II</h2>
-		<p>A significant technical design project in Electrical Engineering completed under the supervision of a faculty member. This design experience is based on the knowledge and skills acquired in earlier course work. Projects may originate from faculty members, students, or external sources. They may have a diverse nature and serve diverse needs. Multi-disciplinary projects are encouraged.</p>
+		<h2>Course Information</h2>
+		<p>Course description and information displayed in this area.</p>
 		<ul>
 			<li>
-			<a href="#">Fit Unscheduled Courses</a>
+			<a id="fitBtn" href="#">Fit Unscheduled Courses</a>
 			</li>
 		</ul>
 	</div>
 
+	<!-- Settings Modal -->
+  <div class="modal fade" id="settingsModal" role="dialog">
+	<div class="modal-dialog">
+	
+	  <!-- Modal content-->
+	  <div class="modal-content">
+		<div class="modal-header">
+		  <button type="button" class="close" data-dismiss="modal">&times;</button>
+		  <h4 class="modal-title">Account Settings</h4>
+		</div>
+		<div class="modal-body">
+		  <form id="loginForm" role="form">
+			<h4><strong>Schedule Preferences</strong></h4>
+			<div class="form-group">
+				<label for="numCourses"><span class="glyphicon glyphicon-book"></span> Courses Per Term:</label>
+					<select name="numCourses" id="numCourses">
+						<option value="1">One</option>
+						<option value="2">Two</option>
+						<option value="3">Three</option>
+						<option value="4">Four</option>
+						<option value="5">Five</option>
+						<option value="6">Six</option>
+					</select>	
+					  <label class="pull-right"><input type="checkbox" value="" checked> Enabled</label>
+			</div>
+			<div class="form-group">
+				<label for="gradDate"><span class="glyphicon glyphicon-calendar"></span> Graduation Date:</label>
+					<select name="gradDate" id="gradDate">
+						<option value="spring">Spring</option>
+						<option value="summer">Summer</option>
+						<option value="fall">Fall</option>
+					</select>
+					<select name="gradYear" id="gradYear">
+						<option value="2014">2014</option>
+						<option value="2015">2015</option>
+						<option value="2016">2016</option>
+						<option value="2017">2017</option>
+						<option value="2018">2018</option>
+						<option value="2019">2019</option>
+					</select>	
+					  <label class="pull-right"><input type="checkbox" value="" checked> Enabled</label>
+			</div>
+		  </form>
+		</div>
+		<div class="modal-footer">
+		  <button type="button" class="btn btn-default pull-right" data-dismiss="modal" href="#" style="margin-left:10px;"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+		  <button type="button" class="btn btn-success pull-right" data-dismiss="modal" href="#"><span class="glyphicon glyphicon-ok"></span> Save</button>
+
+		</div>
+	  </div>
+	</div>
+  </div>
 
 	<div class="program-pane">
 		<div class="TermList">

@@ -1,5 +1,3 @@
-
-
 $(document).ready(function(){
 
 	// Open the signup modal onClick
