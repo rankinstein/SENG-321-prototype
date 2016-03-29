@@ -127,6 +127,24 @@ var makeCoursesDraggable = function () {
 			$("body").unbind('mousemove');
 			var state = JSON.stringify(getCourseState());
 
+			raiseAlert({
+				"alert_level": "info",
+				"strong_text": "Note:",
+				"message_text": "You can undo and redo your actions if needed."
+			});
+			var termNode = $(event.target.parentElement.parentElement);
+			var targetNode = $(event.target);
+			if(termNode.attr('id') === "Summer 2016" && targetNode.attr('id') === "CSC 360"){
+				$(event.target).addClass("warning");
+				raiseAlert({
+					"alert_level": "warning",
+					"strong_text": "Warning:",
+					"message_text": "CSC 360 is not offered in the Summer 2016 term."
+				});
+			} else {
+				$(event.target).removeClass("warning");
+			}
+
 			var settings = {
 				"async": true,
 				"crossDomain": true,
@@ -142,11 +160,6 @@ var makeCoursesDraggable = function () {
 			$.ajax(settings).done(function (response) {
 			});
 
-			raiseAlert({
-				"alert_level": "info",
-				"strong_text": "Note:",
-				"message_text": "You can undo and redo your actions if needed."
-			});
 		}
 	});
 };
